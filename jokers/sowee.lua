@@ -108,70 +108,54 @@ SMODS.Joker{ --sowee
                     ,
                     func = function()
                         if SMODS.pseudorandom_probability(card, 'group_0_75bb4996', 1, card.ability.extra.odds, 'j_imbored_sowee', false) then
-                            local created_joker = false
-                            if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
-                                created_joker = true
-                                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        local joker_card = SMODS.add_card({ set = 'imbored_laughatyou' })
-                                        if joker_card then
-                                            
-                                            
-                                        end
-                                        G.GAME.joker_buffer = 0
-                                        return true
+                            local created_joker = true
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    local joker_card = SMODS.add_card({ set = 'imbored_laughatyou' })
+                                    if joker_card then
+                                        
+                                        
                                     end
-                                }))
-                            end
-                            local created_joker = false
-                            if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
-                                created_joker = true
-                                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        local joker_card = SMODS.add_card({ set = 'imbored_laughatyou' })
-                                        if joker_card then
-                                            
-                                            
-                                        end
-                                        G.GAME.joker_buffer = 0
-                                        return true
+                                    
+                                    return true
+                                end
+                            }))
+                            local created_joker = true
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    local joker_card = SMODS.add_card({ set = 'imbored_laughatyou' })
+                                    if joker_card then
+                                        
+                                        
                                     end
-                                }))
-                            end
-                            local created_joker = false
-                            if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
-                                created_joker = true
-                                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        local joker_card = SMODS.add_card({ set = 'imbored_laughatyou' })
-                                        if joker_card then
-                                            
-                                            
-                                        end
-                                        G.GAME.joker_buffer = 0
-                                        return true
+                                    
+                                    return true
+                                end
+                            }))
+                            local created_joker = true
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    local joker_card = SMODS.add_card({ set = 'imbored_laughatyou' })
+                                    if joker_card then
+                                        
+                                        
                                     end
-                                }))
-                            end
-                            local created_joker = false
-                            if #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
-                                created_joker = true
-                                G.GAME.joker_buffer = G.GAME.joker_buffer + 1
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        local joker_card = SMODS.add_card({ set = 'imbored_laughatyou' })
-                                        if joker_card then
-                                            
-                                            
-                                        end
-                                        G.GAME.joker_buffer = 0
-                                        return true
+                                    
+                                    return true
+                                end
+                            }))
+                            local created_joker = true
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    local joker_card = SMODS.add_card({ set = 'imbored_laughatyou' })
+                                    if joker_card then
+                                        
+                                        
                                     end
-                                }))
-                            end
+                                    
+                                    return true
+                                end
+                            }))
                             card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = created_joker and localize('k_plus_joker') or nil, colour = G.C.BLUE})
                             card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = created_joker and localize('k_plus_joker') or nil, colour = G.C.BLUE})
                             card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = created_joker and localize('k_plus_joker') or nil, colour = G.C.BLUE})
@@ -220,6 +204,24 @@ SMODS.Joker{ --sowee
         -- Showman effect disabled
     end
 }
+
+local check_for_buy_space_ref = G.FUNCS.check_for_buy_space
+G.FUNCS.check_for_buy_space = function(card)
+    if card.config.center.key == "j_imbored_sowee" then -- ignore slot limit when bought
+        return true
+    end
+    return check_for_buy_space_ref(card)
+end
+
+local can_select_card_ref = G.FUNCS.can_select_card
+G.FUNCS.can_select_card = function(e)
+    	if e.config.ref_table.config.center.key == "j_imbored_sowee" then
+        		e.config.colour = G.C.GREEN
+        		e.config.button = "use_card"
+    	else
+        		can_select_card_ref(e)
+    	end
+end
 
 
 local smods_showman_ref = SMODS.showman

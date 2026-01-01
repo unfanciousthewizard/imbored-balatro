@@ -13,10 +13,10 @@ SMODS.Joker{ --sonic cd sprite from the prototype
     loc_txt = {
         ['name'] = 'sonic cd sprite from the prototype',
         ['text'] = {
-            [1] = ' ',
+            [1] = '',
             [2] = '{s:5}You say!{}',
-            [3] = ' ',
-            [4] = ' ',
+            [3] = '',
+            [4] = '',
             [5] = 'makes all face cards considered an ace'
         },
         ['unlock'] = {
