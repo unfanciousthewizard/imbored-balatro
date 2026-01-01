@@ -21,6 +21,7 @@ SMODS.Seal {
     unlocked = true,
     discovered = true,
     no_collection = false,
+    sound = { sound = "crumple2", per = 1.2, vol = 0.6 },
     loc_vars = function(self, info_queue, card)
         return {vars = {((#(G.hand and G.hand.cards or {}) or 0)) * 10}}
     end,
