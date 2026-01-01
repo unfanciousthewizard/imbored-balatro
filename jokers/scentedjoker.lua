@@ -12,7 +12,7 @@ SMODS.Joker{ --Scented Joker
         ['text'] = {
             [1] = 'A revolution in joker technol.....',
             [2] = 'Who took a bite?!',
-            [3] = '{C:blue}#1#{} Chips, scales with jokers owned.',
+            [3] = '{C:blue}+#1#{} Chips, scales with jokers owned.',
             [4] = 'If the card resembling Jimbo is owned,',
             [5] = '{X:mult,C:white}x3{} Mult'
         },
@@ -21,8 +21,8 @@ SMODS.Joker{ --Scented Joker
         }
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 2,
+        y = 1
     },
     display_size = {
         w = 71 * 1, 
