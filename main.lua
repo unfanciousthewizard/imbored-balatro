@@ -41,6 +41,14 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+    key = "CustomSeals", 
+    path = "CustomSeals.png", 
+    px = 71,
+    py = 95, 
+    atlas_table = "ASSET_ATLAS"
+}):register()
+
+SMODS.Atlas({
     key = "CustomVouchers", 
     path = "CustomVouchers.png", 
     px = 71,
@@ -60,7 +68,7 @@ local NFS = require("nativefs")
 to_big = to_big or function(a) return a end
 lenient_bignum = lenient_bignum or function(a) return a end
 
-local jokerIndexList = {9,12,4,5,13,2,7,6,3,11,1,8,10}
+local jokerIndexList = {9,13,4,5,14,2,7,6,3,12,1,8,11,10}
 
 local function load_jokers_folder()
     local mod_path = SMODS.current_mod.path
@@ -96,6 +104,21 @@ local function load_consumables_folder()
         local file_name = files[j].name
         if file_name:sub(-4) == ".lua" then
             assert(SMODS.load_file("consumables/" .. file_name))()
+        end
+    end
+end
+
+
+local sealIndexList = {1}
+
+local function load_seals_folder()
+    local mod_path = SMODS.current_mod.path
+    local seals_path = mod_path .. "/seals"
+    local files = NFS.getDirectoryItemsInfo(seals_path)
+    for i = 1, #sealIndexList do
+        local file_name = files[sealIndexList[i]].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("seals/" .. file_name))()
         end
     end
 end
@@ -160,6 +183,7 @@ end
 load_boosters_file()
 load_jokers_folder()
 load_consumables_folder()
+load_seals_folder()
 load_editions_folder()
 load_vouchers_folder()
 load_decks_folder()
@@ -189,6 +213,7 @@ SMODS.ObjectType({
         ["j_imbored_holycrackers"] = true,
         ["j_imbored_parttheseas"] = true,
         ["j_imbored_pulsesog"] = true,
+        ["j_imbored_ruinedjoker"] = true,
         ["j_imbored_scentedjoker"] = true,
         ["j_imbored_soniccdspritefromtheprototype"] = true,
         ["j_imbored_sowee"] = true,
