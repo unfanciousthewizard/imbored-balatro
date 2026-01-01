@@ -11,8 +11,8 @@ SMODS.Joker{ --Scented Joker
         ['name'] = 'Scented Joker',
         ['text'] = {
             [1] = 'A revolution in joker technol.....',
-            [2] = 'Who toke a bite?!',
-            [3] = '{C:red} #1# {} Mult, scales with jokers owned',
+            [2] = 'Who took a bite?!',
+            [3] = '{C:blue}#1#{} Chips, scales with jokers owned',
             [4] = 'If the card resembling Jimbo is owned,',
             [5] = '{X:mult,C:white}x3{} Mult'
         },
@@ -21,8 +21,8 @@ SMODS.Joker{ --Scented Joker
         }
     },
     pos = {
-        x = 2,
-        y = 1
+        x = 0,
+        y = 0
     },
     display_size = {
         w = 71 * 1, 
@@ -35,12 +35,12 @@ SMODS.Joker{ --Scented Joker
     perishable_compat = true,
     unlocked = true,
     discovered = true,
-    atlas = 'CustomJokers',
-    pools = { ["imbored_imbored_jokers"] = true },
+    atlas = 'Joker',
+    pools = { ["modprefix_imbored_jokers"] = true },
     
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {(#(G.jokers and (G.jokers and G.jokers.cards or {}) or {})) * 3}}
+        return {vars = {(#(G.jokers and (G.jokers and G.jokers.cards or {}) or {})) * 10}}
     end,
     
     calculate = function(self, card, context)
@@ -57,7 +57,7 @@ SMODS.Joker{ --Scented Joker
                 }
             else
                 return {
-                    mult = (#(G.jokers and G.jokers.cards or {})) * 3
+                    chips = (#(G.jokers and G.jokers.cards or {})) * 10
                 }
             end
         end
