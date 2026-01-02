@@ -5,8 +5,7 @@ SMODS.Joker{ --Bulleted Joker
         extra = {
             BulletedMult = 2,
             odds = 2,
-            xmult0 = 2,
-            blind_size0 = 2
+            xmult0 = 2
         }
     },
     loc_txt = {
@@ -47,20 +46,22 @@ SMODS.Joker{ --Bulleted Joker
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then
             if true then
+                card.ability.extra.BulletedMult = 2
                 if SMODS.pseudorandom_probability(card, 'group_0_3638f8ed', 1, card.ability.extra.odds, 'j_imbored_bulletedjoker', false) then
+                    card.ability.extra.BulletedMult = 1
                     SMODS.calculate_effect({Xmult = 2}, card)
                 end
             end
         end
         if context.pseudorandom_result  then
-            if not context.result then
+            if (context.identifier == "bulletedjoker" and not context.result) then
                 return {
                     
                     func = function()
                         if G.GAME.blind.in_blind then
                             
-                            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "X"..tostring(2).." Blind Size", colour = G.C.GREEN})
-                            G.GAME.blind.chips = G.GAME.blind.chips * 2
+                            card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "X"..tostring(card.ability.extra.BulletedMult).." Blind Size", colour = G.C.GREEN})
+                            G.GAME.blind.chips = G.GAME.blind.chips * card.ability.extra.BulletedMult
                             G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
                             G.HUD_blind:recalculate()
                             return true
