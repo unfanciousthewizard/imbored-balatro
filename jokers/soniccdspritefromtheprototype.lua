@@ -32,7 +32,7 @@ SMODS.Joker{ --sonic cd sprite from the prototype
         h = 95 * 1
     },
     cost = 5,
-    rarity = "imbored_useless",
+    rarity = 2,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,

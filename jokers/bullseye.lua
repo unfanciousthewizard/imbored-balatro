@@ -27,8 +27,8 @@ SMODS.Joker{ --bullseye
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 5,
-    rarity = "imbored_useless",
+    cost = 4,
+    rarity = 1,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,

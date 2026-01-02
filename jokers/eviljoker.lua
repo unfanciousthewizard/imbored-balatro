@@ -25,7 +25,7 @@ SMODS.Joker{ --EVIL joker
         h = 95 * 1
     },
     cost = 14,
-    rarity = "imbored_evil_and_dastardly",
+    rarity = 3,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,

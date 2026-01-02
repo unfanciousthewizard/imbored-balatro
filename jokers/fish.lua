@@ -23,7 +23,7 @@ SMODS.Joker{ --fish
         h = 95 * 1
     },
     cost = 1,
-    rarity = "imbored_meme",
+    rarity = 1,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,

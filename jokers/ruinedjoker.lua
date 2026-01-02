@@ -8,7 +8,7 @@ SMODS.Joker{ --Ruined Joker
     loc_txt = {
         ['name'] = 'Ruined Joker',
         ['text'] = {
-            [1] = 'Well this is the last time I don\'t use a protector.',
+            [1] = 'Well, this is the last time I don\'t use a protector.',
             [2] = 'Adds a card protector to all cards in your played hand.'
         },
         ['unlock'] = {
@@ -31,7 +31,7 @@ SMODS.Joker{ --Ruined Joker
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
-    pools = { ["modprefix_imbored_jokers"] = true },
+    pools = { ["imbored_imbored_jokers"] = true },
     
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play  then
@@ -40,6 +40,7 @@ SMODS.Joker{ --Ruined Joker
                 func = function()
                     
                     scored_card:set_seal("imbored_cardprotector", true)
+                    card_eval_status_text(scored_card, 'extra', nil, nil, nil, {message = "Card Modified!", colour = G.C.ORANGE})
                     return true
                 end
             }))

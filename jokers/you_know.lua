@@ -25,14 +25,14 @@ SMODS.Joker{ --...
         h = 95 * 1
     },
     cost = 4,
-    rarity = "imbored_meme",
+    rarity = 3,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
     discovered = true,
     atlas = 'CustomJokers',
-    pools = { ["imbored_imbored_jokers"] = true },
+    pools = { ["imbored_imbored_jokers"] = true, ["imbored_suggestive"] = true },
     
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play  then

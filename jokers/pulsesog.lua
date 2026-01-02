@@ -27,7 +27,7 @@ SMODS.Joker{ --PulseDog
         h = 95 * 1
     },
     cost = 16,
-    rarity = "imbored_pure_and_good",
+    rarity = 4,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
@@ -38,8 +38,8 @@ SMODS.Joker{ --PulseDog
     in_pool = function(self, args)
         return (
             not args 
-            or args.source ~= 'jud' and args.source ~= 'sou' 
-            or args.source == 'sho' or args.source == 'buf' or args.source == 'rif' or args.source == 'rta' or args.source == 'uta' or args.source == 'wra'
+            or args.source ~= 'sho' and args.source ~= 'jud' and args.source ~= 'sou' 
+            or args.source == 'buf' or args.source == 'rif' or args.source == 'rta' or args.source == 'uta' or args.source == 'wra'
         )
         and true
     end,

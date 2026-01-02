@@ -29,7 +29,7 @@ SMODS.Joker{ --sowee
         h = 95 * 1
     },
     cost = 1,
-    rarity = "imbored_useless",
+    rarity = 1,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
