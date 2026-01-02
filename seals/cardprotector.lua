@@ -13,8 +13,13 @@ SMODS.Seal {
         name = 'Card Protector',
         label = 'Card Protector',
         text = {
-            [1] = '{C:red}Discarding{} this card will cause it to lose {C:money}$2{} of market value, and the protector.',
-            [2] = 'If this card is held in hand, {C:blue}+10{} Chips multiplied by the amount of cards in hand'
+            [1] = '{C:red}Discarding{} this card',
+            [2] = 'will cause it to lose',
+            [3] = '{C:money}$2{} of market value.',
+            [4] = 'If this card is held in hand,',
+            [5] = 'get {C:blue}+10{} Chips multiplied by',
+            [6] = 'the amount of cards in hand,',
+            [7] = 'to your current scoring hand.'
         }
     },
     atlas = 'CustomSeals',
@@ -37,14 +42,7 @@ SMODS.Seal {
                     ease_dollars(dollar_value)
                     card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Last Value!", colour = G.C.MONEY})
                     return true
-                end,
-                extra = {
-                    func = function()
-                        context.other_card:set_seal(nil)
-                    end,
-                    message = "Card Modified!",
-                    colour = G.C.BLUE
-                }
+                end
             }
         end
         if context.cardarea == G.hand and context.main_scoring then
