@@ -29,7 +29,7 @@ SMODS.Joker{ --Bulleted Joker
     },
     cost = 4,
     rarity = 1,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
@@ -54,7 +54,7 @@ SMODS.Joker{ --Bulleted Joker
             end
         end
         if context.pseudorandom_result  then
-            if (context.identifier == "bulletedjoker" and not context.result) then
+            if (context.identifier == "j_imbored_bulletedjoker" and not context.result) then
                 return {
                     
                     func = function()
