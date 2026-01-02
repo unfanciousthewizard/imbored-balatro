@@ -7,7 +7,7 @@ SMODS.Joker{ --the joker depicting the beach that makes you old that in itself m
         }
     },
     loc_txt = {
-        ['name'] = 'the joker depicting the beach that makes you old that in itself may make you old at the same pace as the beach that makes you old from the movie old where many people die from the beach that makes you old',
+        ['name'] = 'the joker depicting the beach that makes you old that in itself may make you old',
         ['text'] = {
             [1] = '{X:red,C:white}X1.05{} Mult whenever',
             [2] = 'a card is scored',
