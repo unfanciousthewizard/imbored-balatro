@@ -64,8 +64,8 @@ SMODS.Booster {
         end,
         create_card = function(self, card, i)
             return {
-                set = "Joker",
-                rarity = "imbored_useless",
+                set = "imbored_imbored_jokers",
+                rarity = "Common",
                 area = G.pack_cards,
                 skip_materialize = true,
                 soulable = true,
