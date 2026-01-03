@@ -41,6 +41,14 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+    key = "CustomEnhancements", 
+    path = "CustomEnhancements.png", 
+    px = 71,
+    py = 95, 
+    atlas_table = "ASSET_ATLAS"
+})
+
+SMODS.Atlas({
     key = "CustomSeals", 
     path = "CustomSeals.png", 
     px = 71,
@@ -109,6 +117,21 @@ local function load_consumables_folder()
 end
 
 
+local enhancementIndexList = {1}
+
+local function load_enhancements_folder()
+    local mod_path = SMODS.current_mod.path
+    local enhancements_path = mod_path .. "/enhancements"
+    local files = NFS.getDirectoryItemsInfo(enhancements_path)
+    for i = 1, #enhancementIndexList do
+        local file_name = files[enhancementIndexList[i]].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("enhancements/" .. file_name))()
+        end
+    end
+end
+
+
 local sealIndexList = {1}
 
 local function load_seals_folder()
@@ -154,7 +177,7 @@ local function load_vouchers_folder()
 end
 
 
-local deckIndexList = {3,1,2}
+local deckIndexList = {4,2,3,1}
 
 local function load_decks_folder()
     local mod_path = SMODS.current_mod.path
@@ -183,6 +206,7 @@ end
 load_boosters_file()
 load_jokers_folder()
 load_consumables_folder()
+load_enhancements_folder()
 load_seals_folder()
 load_editions_folder()
 load_vouchers_folder()
@@ -220,7 +244,7 @@ SMODS.ObjectType({
         ["j_imbored_scentedjoker"] = true,
         ["j_imbored_soniccdspritefromtheprototype"] = true,
         ["j_imbored_sowee"] = true,
-        ["j_imbored_thejokerdepictingthebeachthatmakesyouoldthatinitselfmaymakeyouold"] = true,
+        ["j_imbored_thebeachthatmakesyouold"] = true,
         ["j_imbored_wegajoker"] = true,
         ["j_imbored_whofarted"] = true,
         ["j_imbored_you_know"] = true
