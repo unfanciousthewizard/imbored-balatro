@@ -68,7 +68,7 @@ local NFS = require("nativefs")
 to_big = to_big or function(a) return a end
 lenient_bignum = lenient_bignum or function(a) return a end
 
-local jokerIndexList = {12,16,5,6,18,2,8,7,4,15,1,11,14,13,17,9,10,3}
+local jokerIndexList = {12,16,5,6,20,2,8,7,4,15,1,11,14,13,17,9,10,3,18,19}
 
 local function load_jokers_folder()
     local mod_path = SMODS.current_mod.path
@@ -220,7 +220,9 @@ SMODS.ObjectType({
         ["j_imbored_scentedjoker"] = true,
         ["j_imbored_soniccdspritefromtheprototype"] = true,
         ["j_imbored_sowee"] = true,
-        ["j_imbored_thebeachthatmakesyouold"] = true,
+        ["j_imbored_thejokerdepictingthebeachthatmakesyouoldthatinitselfmaymakeyouold"] = true,
+        ["j_imbored_wegajoker"] = true,
+        ["j_imbored_whofarted"] = true,
         ["j_imbored_you_know"] = true
     },
 })
