@@ -38,9 +38,7 @@ SMODS.Joker{ --Ruined Joker
             local scored_card = context.other_card
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    
                     scored_card:set_seal("imbored_cardprotector", true)
-                    card_eval_status_text(scored_card, 'extra', nil, nil, nil, {message = "Card Modified!", colour = G.C.ORANGE})
                     return true
                 end
             }))
