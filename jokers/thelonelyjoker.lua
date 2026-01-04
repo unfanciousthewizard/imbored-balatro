@@ -13,8 +13,7 @@ SMODS.Joker{ --The Lonely Joker
             [1] = 'When {C:red}alone{},',
             [2] = '{C:blue}+20{} Chips and {C:red}+10{} Mult',
             [3] = 'When {C:green}not alone{},',
-            [4] = '{C:green}1/2 {}chance to',
-            [5] = '{C:green}Copy{} joker to the right.'
+            [4] = '{C:green}Copy{} joker to the right.'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -28,9 +27,9 @@ SMODS.Joker{ --The Lonely Joker
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 5,
-    rarity = 2,
-    blueprint_compat = true,
+    cost = 6,
+    rarity = 3,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
