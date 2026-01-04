@@ -12,8 +12,7 @@ SMODS.Joker{ --The Lonely Joker
             mult0_min = -10,
             mult0_max = 10,
             xmult0_min = 0.1,
-            xmult0_max = 1.5,
-            repetitions = 1
+            xmult0_max = 1.5
         }
     },
     loc_txt = {
@@ -23,7 +22,7 @@ SMODS.Joker{ --The Lonely Joker
             [2] = 'effects for {X:black,C:green}STIM-U-LAT-ION.{}',
             [3] = 'When {C:green}with another{} joker,',
             [4] = 'shuffles all jokers and',
-            [5] = 'swaps {C:blue}Chips{} and {C:red}Mult{} repeatedly.'
+            [5] = 'swaps {C:blue}Chips{} and {C:red}Mult{}.'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -69,43 +68,49 @@ SMODS.Joker{ --The Lonely Joker
                     }
                 }
             elseif to_big(#G.jokers.cards) > to_big(1) then
-                for i = 1, card.ability.extra.repetitions do
-                    if #G.jokers.cards > 1 then
-                        G.jokers:unhighlight_all()
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'before',
-                            func = function()
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        G.jokers:shuffle('aajk')
-                                        play_sound('cardSlide1', 0.85)
-                                        return true
-                                    end,
-                                }))
-                                delay(0.15)
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        G.jokers:shuffle('aajk')
-                                        play_sound('cardSlide1', 1.15)
-                                        return true
-                                    end
-                                }))
-                                delay(0.15)
-                                G.E_MANAGER:add_event(Event({
-                                    func = function()
-                                        G.jokers:shuffle('aajk')
-                                        play_sound('cardSlide1', 1)
-                                        return true
-                                    end
-                                }))
-                                delay(0.5)
-                                return true
-                            end
-                        }))
-                    end
-                    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "STIMULATION.", colour = G.C.WHITE})
-                    SMODS.calculate_effect({swap = true}, card)
+                if #G.jokers.cards > 1 then
+                    G.jokers:unhighlight_all()
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'before',
+                        func = function()
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.jokers:shuffle('aajk')
+                                    play_sound('cardSlide1', 0.85)
+                                    return true
+                                end,
+                            }))
+                            delay(0.15)
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.jokers:shuffle('aajk')
+                                    play_sound('cardSlide1', 1.15)
+                                    return true
+                                end
+                            }))
+                            delay(0.15)
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.jokers:shuffle('aajk')
+                                    play_sound('cardSlide1', 1)
+                                    return true
+                                end
+                            }))
+                            delay(0.5)
+                            return true
+                        end
+                    }))
                 end
+                return {
+                    extra = {
+                        message = "STIMULATION.",
+                        colour = G.C.ORANGE,
+                        extra = {
+                            swap = true,
+                            colour = G.C.CHIPS
+                        }
+                    }
+                }
             end
         end
     end
