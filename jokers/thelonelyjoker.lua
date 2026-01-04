@@ -30,8 +30,8 @@ SMODS.Joker{ --The Lonely Joker
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 6,
-    rarity = 3,
+    cost = 5,
+    rarity = 2,
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
@@ -58,7 +58,7 @@ SMODS.Joker{ --The Lonely Joker
                 return {
                     chips = (#(G.jokers and G.jokers.cards or {})) * 20,
                     extra = {
-                        mult = (#(G.jokers and G.jokers.cards or {})) * 20
+                        mult = (#(G.jokers and G.jokers.cards or {})) * 10
                     }
                 }
             end
