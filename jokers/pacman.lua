@@ -28,7 +28,7 @@ SMODS.Joker{ --PAC MAN?!
     },
     cost = 5,
     rarity = 2,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,

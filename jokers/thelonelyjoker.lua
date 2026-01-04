@@ -32,7 +32,7 @@ SMODS.Joker{ --The Lonely Joker
     },
     cost = 5,
     rarity = 2,
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
