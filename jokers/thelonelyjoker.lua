@@ -5,18 +5,25 @@ SMODS.Joker{ --The Lonely Joker
         extra = {
             checkchips = 20,
             checkmult = 10,
-            jokercount = 0,
-            chips0 = 20,
-            mult0 = 10
+            chips0_min = -10,
+            chips0_max = 10,
+            xchips0_min = 0.1,
+            xchips0_max = 1.5,
+            mult0_min = -10,
+            mult0_max = 10,
+            xmult0_min = 0.1,
+            xmult0_max = 1.5,
+            repetitions = 1
         }
     },
     loc_txt = {
         ['name'] = 'The Lonely Joker',
         ['text'] = {
-            [1] = '{C:blue}+20{} Chips and {C:red}+10{} Mult',
-            [2] = '{C:green}Multiply{} those by',
-            [3] = 'The number of',
-            [4] = '{C:attention}Jokers{} in hand.'
+            [1] = 'When {C:red}alone{}, does {C:attention}random{}',
+            [2] = 'effects for {X:black,C:green}STIM-U-LAT-ION.{}',
+            [3] = 'When {C:green}with another{} joker,',
+            [4] = 'shuffles all jokers and',
+            [5] = 'swaps {C:blue}Chips{} and {C:red}Mult{} repeatedly.'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -42,25 +49,63 @@ SMODS.Joker{ --The Lonely Joker
     
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {card.ability.extra.checkchips, card.ability.extra.checkmult, (#(G.jokers and (G.jokers and G.jokers.cards or {}) or {})) * 20}}
+        return {vars = {card.ability.extra.checkchips, card.ability.extra.checkmult}}
     end,
     
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then
             if to_big(#G.jokers.cards) == to_big(1) then
                 return {
-                    chips = 20,
+                    chips = pseudorandom('RANGE:-10|10', -10, 10),
                     extra = {
-                        mult = 10
+                        x_chips = pseudorandom('RANGE:0.1|1.5', 0.1, 1.5),
+                        colour = G.C.DARK_EDITION,
+                        extra = {
+                            mult = pseudorandom('RANGE:-10|10', -10, 10),
+                            extra = {
+                                Xmult = pseudorandom('RANGE:0.1|1.5', 0.1, 1.5)
+                            }
+                        }
                     }
                 }
             elseif to_big(#G.jokers.cards) > to_big(1) then
-                return {
-                    chips = (#(G.jokers and G.jokers.cards or {})) * 20,
-                    extra = {
-                        mult = (#(G.jokers and G.jokers.cards or {})) * 10
-                    }
-                }
+                for i = 1, card.ability.extra.repetitions do
+                    if #G.jokers.cards > 1 then
+                        G.jokers:unhighlight_all()
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'before',
+                            func = function()
+                                G.E_MANAGER:add_event(Event({
+                                    func = function()
+                                        G.jokers:shuffle('aajk')
+                                        play_sound('cardSlide1', 0.85)
+                                        return true
+                                    end,
+                                }))
+                                delay(0.15)
+                                G.E_MANAGER:add_event(Event({
+                                    func = function()
+                                        G.jokers:shuffle('aajk')
+                                        play_sound('cardSlide1', 1.15)
+                                        return true
+                                    end
+                                }))
+                                delay(0.15)
+                                G.E_MANAGER:add_event(Event({
+                                    func = function()
+                                        G.jokers:shuffle('aajk')
+                                        play_sound('cardSlide1', 1)
+                                        return true
+                                    end
+                                }))
+                                delay(0.5)
+                                return true
+                            end
+                        }))
+                    end
+                    card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "STIMULATION.", colour = G.C.WHITE})
+                    SMODS.calculate_effect({swap = true}, card)
+                end
             end
         end
     end

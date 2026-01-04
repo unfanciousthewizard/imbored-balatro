@@ -9,10 +9,10 @@ SMODS.Joker{ --PAC MAN?!
     loc_txt = {
         ['name'] = 'PAC MAN?!',
         ['text'] = {
-            [1] = '{X:red,C:white}X#1#{} Mult',
+            [1] = '{X:blue,C:white}X#1#{} Chips',
             [2] = 'Upon playing a hand,',
             [3] = '{C:red}Destroy{} joker to the right,',
-            [4] = 'Increment {X:red,C:white}XMult{} by 0.25'
+            [4] = 'Increment {X:blue,C:white}XChips{} by 0.2'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -26,8 +26,8 @@ SMODS.Joker{ --PAC MAN?!
         w = 71 * 1, 
         h = 95 * 1
     },
-    cost = 5,
-    rarity = 2,
+    cost = 6,
+    rarity = 3,
     blueprint_compat = false,
     eternal_compat = true,
     perishable_compat = true,
@@ -69,9 +69,9 @@ SMODS.Joker{ --PAC MAN?!
                     }))
                     card_eval_status_text(context.blueprint_card or card, 'extra', nil, nil, nil, {message = "Destroyed!", colour = G.C.RED})
                 end
-                card.ability.extra.MultNumber = (card.ability.extra.MultNumber) + 0.25
+                card.ability.extra.MultNumber = (card.ability.extra.MultNumber) + 0.2
                 return {
-                    Xmult = card.ability.extra.MultNumber
+                    x_chips = card.ability.extra.MultNumber
                 }
             end
         end
