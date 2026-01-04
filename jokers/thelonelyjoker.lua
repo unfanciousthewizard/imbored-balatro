@@ -7,7 +7,8 @@ SMODS.Joker{ --The Lonely Joker
             checkmult = 10,
             jokercount = 0,
             chips0 = 20,
-            mult0 = 10
+            mult0 = 10,
+            repetitions = 5
         }
     },
     loc_txt = {
@@ -68,19 +69,20 @@ SMODS.Joker{ --The Lonely Joker
             context.ending_booster or context.skipping_booster or context.open_booster or
             context.skip_blind or context.before or context.pre_discard or context.setting_blind or
         context.using_consumeable)   then
-            return {
-                func = function()
-                    card.ability.extra.checkchips = (#(G.jokers and G.jokers.cards or {})) * 20
-                    return true
-                end,
-                extra = {
-                    func = function()
+            if true then
+                for i = 1, 5 do
+                    SMODS.calculate_effect({func = function()
                         card.ability.extra.checkmult = (#(G.jokers and G.jokers.cards or {})) * 10
                         return true
-                    end,
-                    colour = G.C.BLUE
-                }
-            }
+                    end}, card)
+                end
+                for i = 1, 5 do
+                    SMODS.calculate_effect({func = function()
+                        card.ability.extra.checkchips = (#(G.jokers and G.jokers.cards or {})) * 20
+                        return true
+                    end}, card)
+                end
+            end
         end
     end
 }
