@@ -3,6 +3,8 @@ SMODS.Joker{ --The Lonely Joker
     key = "thelonelyjoker",
     config = {
         extra = {
+            checkchips = 20,
+            checkmult = 10,
             jokercount = 0,
             chips0 = 20,
             mult0 = 10
@@ -11,12 +13,10 @@ SMODS.Joker{ --The Lonely Joker
     loc_txt = {
         ['name'] = 'The Lonely Joker',
         ['text'] = {
-            [1] = 'When {C:red}alone{},',
-            [2] = '{C:blue}+20{} Chips and {C:red}+10{} Mult',
-            [3] = 'When {C:green}not alone{},',
-            [4] = '{C:green}Multiply{} those by',
-            [5] = 'The number of',
-            [6] = '{C:attention}Jokers{} in hand.'
+            [1] = '{C:blue}+#2#{} Chips and {C:red}+#3#{} Mult',
+            [2] = '{C:green}Multiply{} those by',
+            [3] = 'The number of',
+            [4] = '{C:attention}Jokers{} in hand.'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -42,7 +42,7 @@ SMODS.Joker{ --The Lonely Joker
     
     loc_vars = function(self, info_queue, card)
         
-        return {vars = {(#(G.jokers and (G.jokers and G.jokers.cards or {}) or {})) * 20}}
+        return {vars = {card.ability.extra.checkchips, card.ability.extra.checkmult, (#(G.jokers and (G.jokers and G.jokers.cards or {}) or {})) * 20}}
     end,
     
     calculate = function(self, card, context)
@@ -62,6 +62,25 @@ SMODS.Joker{ --The Lonely Joker
                     }
                 }
             end
+        end
+        if (context.end_of_round or context.reroll_shop or context.buying_card or
+            context.selling_card or context.ending_shop or context.starting_shop or 
+            context.ending_booster or context.skipping_booster or context.open_booster or
+            context.skip_blind or context.before or context.pre_discard or context.setting_blind or
+        context.using_consumeable)   then
+            return {
+                func = function()
+                    card.ability.extra.checkchips = (#(G.jokers and G.jokers.cards or {})) * 20
+                    return true
+                end,
+                extra = {
+                    func = function()
+                        card.ability.extra.checkmult = (#(G.jokers and G.jokers.cards or {})) * 10
+                        return true
+                    end,
+                    colour = G.C.BLUE
+                }
+            }
         end
     end
 }
