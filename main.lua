@@ -289,3 +289,25 @@ SMODS.current_mod.optional_features = function()
         post_trigger = true 
     }
 end
+if 2 > 1 then
+    local oldfunc = Game.main_menu
+    Game.main_menu = function(change_context)
+        local ret = oldfunc(change_context)
+        local newcard = Card(
+            G.title_top.T.x,
+            G.title_top.T.y,
+            G.CARD_W,
+            G.CARD_H,
+            G.P_CARDS.empty,
+            G.P_CENTERS.j_imbored_wegajoker,
+            { bypass_discovery_center = true }
+        )
+        G.title_top.T.w = G.title_top.T.w * 1.7675
+        G.title_top.T.x = G.title_top.T.x - 0.8
+        G.title_top:emplace(newcard)
+        newcard.T.w = newcard.T.w * 1.1 * 1.2
+		newcard.T.h = newcard.T.h * 1.1 * 1.2
+        newcard.no_ui = true
+        newcard.states.visible = true
+    end
+end
