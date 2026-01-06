@@ -76,7 +76,7 @@ local NFS = require("nativefs")
 to_big = to_big or function(a) return a end
 lenient_bignum = lenient_bignum or function(a) return a end
 
-local jokerIndexList = {13,17,5,6,22,2,8,7,4,16,1,12,15,14,18,9,10,3,20,21,19,11}
+local jokerIndexList = {16,22,7,8,28,2,10,9,6,21,1,15,20,18,24,11,13,5,26,27,25,14,4,19,3,23,17,12}
 
 local function load_jokers_folder()
     local mod_path = SMODS.current_mod.path
@@ -230,6 +230,8 @@ SMODS.ObjectType({
     key = "imbored_imbored_jokers",
     cards = {
         ["j_imbored__3"] = true,
+        ["j_imbored_alternatejoker"] = true,
+        ["j_imbored_blindfoldedjoker"] = true,
         ["j_imbored_bulletedjoker"] = true,
         ["j_imbored_bullseye"] = true,
         ["j_imbored_eviljoker"] = true,
@@ -237,14 +239,18 @@ SMODS.ObjectType({
         ["j_imbored_gex"] = true,
         ["j_imbored_holycrackers"] = true,
         ["j_imbored_horizontaljoker"] = true,
+        ["j_imbored_meltedjoker"] = true,
         ["j_imbored_nsfj"] = true,
         ["j_imbored_pacman"] = true,
         ["j_imbored_parttheseas"] = true,
         ["j_imbored_pulsesog"] = true,
+        ["j_imbored_rtxjoker"] = true,
         ["j_imbored_ruinedjoker"] = true,
+        ["j_imbored_scaredjoker"] = true,
         ["j_imbored_scentedjoker"] = true,
         ["j_imbored_soniccdspritefromtheprototype"] = true,
         ["j_imbored_sowee"] = true,
+        ["j_imbored_suspiciouslypurplejoker"] = true,
         ["j_imbored_thebeachthatmakesyouold"] = true,
         ["j_imbored_thelonelyjoker"] = true,
         ["j_imbored_wegajoker"] = true,
@@ -263,6 +269,7 @@ SMODS.ObjectType({
 SMODS.ObjectType({
     key = "imbored_suggestive",
     cards = {
+        ["j_imbored_blindfoldedjoker"] = true,
         ["j_imbored_nsfj"] = true,
         ["j_imbored_you_know"] = true
     },
