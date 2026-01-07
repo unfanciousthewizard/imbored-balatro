@@ -1,5 +1,5 @@
 SMODS.Sound{
-    key="ominous",
+    key="imbored_ominous",
     path="ominous.ogg",
     pitch=0.7,
     volume=0.6,

@@ -41,7 +41,7 @@ SMODS.Joker{ --JokerBrine
         if context.buying_card and context.card.config.center.key == self.key and context.cardarea == G.jokers  then
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    play_sound("ominous")
+                    play_sound("imbored_ominous")
                     
                     return true
                 end,
@@ -50,7 +50,7 @@ SMODS.Joker{ --JokerBrine
         if context.selling_self  then
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    play_sound("ominous")
+                    play_sound("imbored_ominous")
                     
                     return true
                 end,
