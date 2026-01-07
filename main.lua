@@ -76,7 +76,7 @@ local NFS = require("nativefs")
 to_big = to_big or function(a) return a end
 lenient_bignum = lenient_bignum or function(a) return a end
 
-local jokerIndexList = {16,22,7,8,28,2,10,9,6,21,1,15,20,18,24,11,13,5,26,27,25,14,4,19,3,23,17,12}
+local jokerIndexList = {17,23,7,8,29,2,10,9,6,22,1,16,21,19,25,11,14,5,27,28,26,15,4,20,3,24,18,13,12}
 
 local function load_jokers_folder()
     local mod_path = SMODS.current_mod.path
@@ -204,6 +204,7 @@ local function load_boosters_file()
 end
 
 load_boosters_file()
+assert(SMODS.load_file("sounds.lua"))()
 load_jokers_folder()
 load_consumables_folder()
 load_enhancements_folder()
@@ -239,6 +240,7 @@ SMODS.ObjectType({
         ["j_imbored_gex"] = true,
         ["j_imbored_holycrackers"] = true,
         ["j_imbored_horizontaljoker"] = true,
+        ["j_imbored_jokerbrine"] = true,
         ["j_imbored_meltedjoker"] = true,
         ["j_imbored_nsfj"] = true,
         ["j_imbored_pacman"] = true,
