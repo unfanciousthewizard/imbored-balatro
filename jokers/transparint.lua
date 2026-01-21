@@ -8,7 +8,7 @@ SMODS.Joker{ --Transparint
     loc_txt = {
         ['name'] = 'Transparint',
         ['text'] = {
-            [1] = '{C:green}1/10{} chance to {C:green}copy{} {C:attention}joker{} to the right'
+            [1] = '{C:green}0/10{} chance to {C:green}copy{} {C:attention}joker{} to the right'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
