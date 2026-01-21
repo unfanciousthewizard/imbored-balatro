@@ -1,24 +1,23 @@
 
-SMODS.Joker{ --Melted Joker
-    key = "meltedjoker",
+SMODS.Joker{ --Stencilprint
+    key = "stencilprint",
     config = {
         extra = {
-            xmult0 = 1.5
+            JokerCountSHIT = 1
         }
     },
     loc_txt = {
-        ['name'] = 'Melted Joker',
+        ['name'] = 'Stencilprint',
         ['text'] = {
-            [1] = '{E:1}glurrg.....{}',
-            [2] = '{X:red,C:white}X1.5{} Mult'
+            [1] = '{C:green}3/6{} chance to {C:green}copy{} {C:attention}joker{} to the right'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
         }
     },
     pos = {
-        x = 7,
-        y = 2
+        x = 1,
+        y = 3
     },
     display_size = {
         w = 71 * 1, 
@@ -34,11 +33,8 @@ SMODS.Joker{ --Melted Joker
     atlas = 'CustomJokers',
     pools = { ["imbored_imbored_jokers"] = true },
     
-    calculate = function(self, card, context)
-        if context.cardarea == G.jokers and context.joker_main  then
-            return {
-                Xmult = 1.5
-            }
-        end
+    loc_vars = function(self, info_queue, card)
+        
+        return {vars = {card.ability.extra.JokerCountSHIT}}
     end
 }

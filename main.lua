@@ -76,7 +76,7 @@ local NFS = require("nativefs")
 to_big = to_big or function(a) return a end
 lenient_bignum = lenient_bignum or function(a) return a end
 
-local jokerIndexList = {17,23,7,8,29,2,10,9,6,22,1,16,21,19,25,11,14,5,27,28,26,15,4,20,3,24,18,13,12}
+local jokerIndexList = {19,26,8,9,34,2,11,10,7,25,1,18,23,21,29,12,16,6,32,33,30,17,4,22,3,28,20,14,13,24,27,31,15,5}
 
 local function load_jokers_folder()
     local mod_path = SMODS.current_mod.path
@@ -233,6 +233,7 @@ SMODS.ObjectType({
         ["j_imbored__3"] = true,
         ["j_imbored_alternatejoker"] = true,
         ["j_imbored_blindfoldedjoker"] = true,
+        ["j_imbored_blindprint"] = true,
         ["j_imbored_bulletedjoker"] = true,
         ["j_imbored_bullseye"] = true,
         ["j_imbored_eviljoker"] = true,
@@ -242,6 +243,7 @@ SMODS.ObjectType({
         ["j_imbored_horizontaljoker"] = true,
         ["j_imbored_jokerbrine"] = true,
         ["j_imbored_meltedjoker"] = true,
+        ["j_imbored_notprint"] = true,
         ["j_imbored_nsfj"] = true,
         ["j_imbored_pacman"] = true,
         ["j_imbored_parttheseas"] = true,
@@ -250,11 +252,14 @@ SMODS.ObjectType({
         ["j_imbored_ruinedjoker"] = true,
         ["j_imbored_scaredjoker"] = true,
         ["j_imbored_scentedjoker"] = true,
+        ["j_imbored_shitprint"] = true,
         ["j_imbored_soniccdspritefromtheprototype"] = true,
         ["j_imbored_sowee"] = true,
+        ["j_imbored_stencilprint"] = true,
         ["j_imbored_suspiciouslypurplejoker"] = true,
         ["j_imbored_thebeachthatmakesyouold"] = true,
         ["j_imbored_thelonelyjoker"] = true,
+        ["j_imbored_transparint"] = true,
         ["j_imbored_wegajoker"] = true,
         ["j_imbored_whofarted"] = true,
         ["j_imbored_you_know"] = true
